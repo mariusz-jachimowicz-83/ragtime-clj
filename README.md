@@ -6,7 +6,7 @@ Extension for [ragtime](https://github.com/weavejester/ragtime) that handles mig
 
 ## Installation
 
-[![Clojars Project](https://img.shields.io/clojars/v/com.mjachimowicz/ragtime.clj.svg)](https://clojars.org/com.mjachimowicz/ragtime-clj)
+[![Clojars Project](https://img.shields.io/clojars/v/com.mjachimowicz/ragtime-clj.svg)](https://clojars.org/com.mjachimowicz/ragtime-clj)
 
 ## License
 
