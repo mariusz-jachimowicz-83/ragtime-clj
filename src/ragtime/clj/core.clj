@@ -31,8 +31,9 @@
 (defn- remove-extension [file]
   (second (re-matches #"(.*)\.[^.]*" (str file))))
 
-(defn clj-file->ns-name [file-content]
+(defn clj-file->ns-name
   "Extract ns name from `file-content`"
+  [file-content]
   (->> file-content
        (re-find #"^\(ns\s+([^\s);]+)")
        second))
