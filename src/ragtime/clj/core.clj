@@ -32,9 +32,10 @@
   (second (re-matches #"(.*)\.[^.]*" (str file))))
 
 (defn clj-file->ns-name [file-content]
-  (-> (re-seq #"(?m)^(?:.+ns\s)(.*)$" file-content)
-      first
-      second))
+  "Extract ns name from `file-content`"
+  (->> file-content
+       (re-find #"^\(ns\s+([^\s);]+)")
+       second))
 
 (defn- resolve-fn! [namespace-symbol fn-symbol]
   (or (ns-resolve namespace-symbol fn-symbol)

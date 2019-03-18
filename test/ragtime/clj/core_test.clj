@@ -4,7 +4,7 @@
             [ragtime.core      :as ragtime]
             [ragtime.protocols :as ragtime-protocols]
             [clojure.java.jdbc :as jdbc]
-            [ragtime.clj.core]))
+            [ragtime.clj.core :refer [clj-file->ns-name]]))
 
 (def db-spec "jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1")
 
@@ -40,3 +40,27 @@
     (ragtime/rollback-last db idx (count ms))
     (is (= #{"RAGTIME_MIGRATIONS"} (table-names db)))
     (is (empty? (ragtime-protocols/applied-migration-ids db)))))
+
+(deftest ns-name-regex
+  (is (=
+       "asd.asdads.asdads"
+       (clj-file->ns-name "(ns asd.asdads.asdads
+  (:require [some.dep :refer [omg]]))")))
+
+  (is (=
+       "my.db.migrations.20190314091619-some_ident"
+       (clj-file->ns-name "(ns my.db.migrations.20190314091619-some_ident
+  \"Database migration to pear-shaped-obecjts table\"
+  (:require
+   [taoensso.timbre :as t]
+   [clojure.java.jdbc :as j]
+   [honeysql.core :as sql]
+   [honeysql.helpers :as h]
+   [honeysql-postgres.helpers :as hp]))
+")))
+
+  (is (=
+       "my.db.migrations.20190314091619-some_ident"
+       (clj-file->ns-name "(ns my.db.migrations.20190314091619-some_ident (:require
+   [taoensso.timbre :as t]
+)) "))))
