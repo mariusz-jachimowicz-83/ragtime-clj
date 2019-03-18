@@ -8,6 +8,11 @@ Extension for [ragtime](https://github.com/weavejester/ragtime) that handles mig
 
 [![Clojars Project](https://img.shields.io/clojars/v/com.mjachimowicz/ragtime-clj.svg)](https://clojars.org/com.mjachimowicz/ragtime-clj)
 
+## Contributors
+
+* [Mariusz Jachimowicz](https://github.com/mariusz-jachimowicz-83)
+* [Rune Juhl Jacobsen](https://github.com/runejuhl)
+
 ## License
 
 Copyright © 2018 Mariusz Jachimowicz
