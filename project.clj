@@ -1,4 +1,4 @@
-(defproject com.mjachimowicz/ragtime-clj "0.1.1"
+(defproject com.mjachimowicz/ragtime-clj "0.1.2"
   :description "Extension for ragtime that handles migrations as clj files"
   :url         "https://github.com/mariusz-jachimowicz-83/ragtime-clj"
   :license     {:name "Eclipse Public License"
