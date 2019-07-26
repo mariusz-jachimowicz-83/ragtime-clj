@@ -12,8 +12,8 @@
 (defrecord CljMigration [id up down]
   ragtime.protocols/Migration
   (id [_] id)
-  (run-up!   [_ db] (execute-clj! (:db-spec db) up))
-  (run-down! [_ db] (execute-clj! (:db-spec db) down)))
+  (run-up!   [_ db] (execute-clj! (or (:db-spec db) db) up))
+  (run-down! [_ db] (execute-clj! (or (:db-spec db) db) down)))
 
 (defn clj-migration
   "Create a Ragtime migration from a map with a unique :id, and :up and :down
